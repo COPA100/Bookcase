@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #dad7cd;
+  --color-gren1: #a3b18a;
+  --color-gren2: #588157;
+  --color-gren3: #3a5a40;
+  --color-gren4: #344e41;
+
+  --animate-fade-up: fadeUp 0.5s ease-out forwards;
+  --animate-fade-out: fadeOut 0.1s ease-out forwards;
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+}

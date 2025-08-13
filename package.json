@@ -1,0 +1,24 @@
+{
+  "name": "odin-project",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/COPA100/odin-project-js#readme",
+  "bugs": {
+    "url": "https://github.com/COPA100/odin-project-js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/COPA100/odin-project-js.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "tailwindcss": "^4.1.11"
+  }
+}
