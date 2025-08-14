@@ -76,16 +76,21 @@
 
     <main
       id="mainGrid"
-      class="grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-8 pt-5 px-[5%] 2xl:px-[15%]"
+      class="grid grid-cols-[repeat(auto-fill,minmax(330px,1fr))] gap-8 pt-5 px-[5%] 2xl:px-[15%]"
     >
       <div
         class="bg-gren1 p-4 rounded-lg shadow-sm hover:translate-y-[-2px] hover:shadow-lg transition-all duration-500"
       >
         <div class="flex flex-col gap-2 mb-4 text-gren3 font-semibold">
-          <h1>Name of book</h1>
+          <h1 class="text-xl text-gren4">Name of book</h1>
           <h2>Author</h2>
           <h2># Pages</h2>
-          <h2>Read</h2>
+          <span class="flex justify-center items-center gap-1 rounded-md w-fit px-3 bg-green-50">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+            <h2>Read</h2>
+          </span>
         </div>
         <div class="flex justify-stretch gap-4 text-white font-semibold">
           <button
@@ -99,6 +104,7 @@
             Delete
           </button>
         </div>
+        
       </div>
     </main>
 

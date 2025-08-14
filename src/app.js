@@ -6,7 +6,7 @@ const submitBtn = document.getElementById("submitBtn");
 
 newBook.addEventListener("click", () => {
   dialog.classList.add("animate-fade-up");
-  dialog.show();
+  dialog.showModal();
   setTimeout(() => {
     dialog.classList.remove("animate-fade-up");
   }, 500);
