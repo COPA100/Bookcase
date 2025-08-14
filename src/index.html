@@ -9,7 +9,7 @@
     <header class="flex justify-center pt-5">
       <a id="newBook"
         ><button
-          class="flex items-center justify-center font-semibold text-3xl bg-gren1 text-gren3 border-3 px-5 py-1 rounded-xl hover:translate-y-[-2px] transform hover:text-gren1 hover:border-gren3 hover:bg-gren3 hover:shadow-lg transition-all duration-150"
+          class="flex items-center justify-center font-semibold text-3xl bg-gren1 text-gren3 border-3 px-5 py-1 rounded-xl hover:translate-y-[-2px] transform hover:text-gren1 hover:border-gren3 hover:bg-gren3 hover:shadow-lg transition-all duration-150 cursor-pointer"
         >
           ADD BOOK
         </button></a
@@ -21,33 +21,33 @@
         <div
           class="w-[100%] bg-gren2 text-white text-2xl font-semibold py-2 flex justify-center"
         >
-          <h2>Add New Book</h2>
+          <h2>ADD NEW BOOK</h2>
         </div>
         <div class="px-5 py-3">
           <div class="">
-            <h3 class="text-xl">Title</h3>
+            <h3 class="text-xl font-semibold">Title</h3>
             <input
               id="titleInput"
               type="text"
-              class="text-black bg-white rounded-md px-2 my-2 w-full"
+              class="text-black bg-white rounded-md px-2 py-1 my-2 w-full"
               placeholder="Enter title . . ."
             />
-            <h3 class="text-xl">Author</h3>
+            <h3 class="text-xl font-semibold">Author</h3>
             <input
               id="authorInput"
               type="text"
-              class="text-black bg-white rounded-md px-2 my-2 w-full"
+              class="text-black bg-white rounded-md px-2 py-1 my-2 w-full"
               placeholder="Enter author . . ."
             />
-            <h3 class="text-xl">Pages</h3>
+            <h3 class="text-xl font-semibold">Pages</h3>
             <input
               id="pagesInput"
               type="text"
-              class="text-black bg-white rounded-md px-2 my-2 w-full"
+              class="text-black bg-white rounded-md px-2 py-1 my-2 w-full"
               placeholder="Enter page amount . . ."
             />
             <div class="flex gap-3 items-center">
-              <h3 class="text-xl">Have you read the book?</h3>
+              <h3 class="text-xl font-semibold">Have you read the book?</h3>
               <input
                 id="checkboxInput"
                 type="checkbox"
@@ -59,13 +59,13 @@
           <div class="flex justify-end gap-3">
             <button
               id="closeBtn"
-              class="font-semibold px-3 py-1 bg-red-400 text-white rounded-lg hover:scale-103 hover:shadow-sm transition-all duration-200"
+              class="font-semibold px-3 py-1 bg-red-400 text-white rounded-lg hover:scale-103 hover:shadow-sm transition-all duration-200 cursor-pointer"
             >
               Cancel
             </button>
             <button
               id="submitBtn"
-              class="font-semibold px-3 py-1 bg-gren2 text-white rounded-lg hover:scale-103 hover:shadow-sm transition-all duration-200"
+              class="font-semibold px-3 py-1 bg-gren2 text-white rounded-lg hover:scale-103 hover:shadow-sm transition-all duration-200 cursor-pointer"
             >
               Add Book
             </button>
@@ -73,6 +73,34 @@
         </div>
       </dialog>
     </header>
+
+    <main
+      id="mainGrid"
+      class="grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-8 pt-5 px-[5%] 2xl:px-[15%]"
+    >
+      <div
+        class="bg-gren1 p-4 rounded-lg shadow-sm hover:translate-y-[-2px] hover:shadow-lg transition-all duration-500"
+      >
+        <div class="flex flex-col gap-2 mb-4 text-gren3 font-semibold">
+          <h1>Name of book</h1>
+          <h2>Author</h2>
+          <h2># Pages</h2>
+          <h2>Read</h2>
+        </div>
+        <div class="flex justify-stretch gap-4 text-white font-semibold">
+          <button
+            class="bg-gren2 px-3 py-1 rounded-lg flex-1 hover:shadow-md hover:scale-[102%] transition-all cursor-pointer"
+          >
+            Mark Unread
+          </button>
+          <button
+            class="bg-red-400 px-3 py-1 rounded-lg flex-1 hover:shadow-md hover:scale-[102%] transition-all cursor-pointer"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </main>
 
     <script src="app.js"></script>
   </body>

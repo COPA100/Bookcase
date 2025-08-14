@@ -26,6 +26,12 @@ submitBtn.addEventListener("click", () => {
     dialog.close();
     dialog.classList.remove("animate-fade-out");
   }, 100);
+
+  const text = document.getElementById("titleInput");
+  const author = document.getElementById("authorInput");
+  const pages = document.getElementById("pagesInput");
+  const checkbox = document.getElementById("checkboxInput");
+  addBookToLibrary(text, author, pages, checkbox);
 });
 
 // DATA CODE DATA CODE DATA CODE DATA CODE DATA CODE DATA CODE DATA CODE DATA CODE DATA CODE DATA CODE
@@ -56,10 +62,14 @@ function addBookToLibrary(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read, id);
 
   myLibrary.push(newBook);
+  renderLibrary();
 }
 
-function displayLibrary() {
-  for (let i = 0; i < myLibrary.length; i++) {}
+function renderLibrary() {
+  for (let i = 0; i < myLibrary.length; i++) {
+    const book = myLibrary[i];
+    const cardTemplate = ``;
+  }
 }
 
 const harry = new Book("harry", "colin", "67", "not read yet");
