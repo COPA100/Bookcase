@@ -33,6 +33,8 @@ function renderLibrary() {
   localStorage.setItem("users", JSON.stringify(myLibrary));
   main.innerHTML = "";
 
+  libraryEmpty();
+
   for (let i = 0; i < myLibrary.length; i++) {
     const book = myLibrary[i];
 
@@ -149,6 +151,18 @@ function toggleReadStatus(bookId) {
     }
   }
   renderLibrary();
+}
+
+function libraryEmpty() {
+  const element = document.getElementById("libraryEmptySection");
+
+  if (myLibrary.length > 0) {
+    element.classList.add("hidden");
+    element.classList.remove("flex");
+  } else {
+    element.classList.remove("hidden");
+    element.classList.add("flex");
+  }
 }
 
 // DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE

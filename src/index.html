@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./output.css" rel="stylesheet" />
+    <title>Bookcase</title>
   </head>
   <body class="min-h-screen bg-gradient-to-b from-cream to-cream/10 text-gren1">
     <header class="flex justify-center pt-5">
@@ -27,7 +28,7 @@
       </button>
       <dialog
         id="bookDialog"
-        class="bg-gren1 rounded-2xl w-90 sm:w-150 fixed top-[280px] left-[50%] translate-[-50%] overflow-hidden border-gren3 border-3 text-gren3"
+        class="bg-gren1 rounded-2xl w-90 sm:w-150 fixed top-[45%] left-[50%] translate-[-50%] overflow-hidden border-gren3 border-3 text-gren3"
       >
         <div
           class="w-[100%] bg-gren2 text-white text-2xl font-semibold py-2 flex justify-center"
@@ -67,7 +68,7 @@
             </div>
           </div>
 
-          <div class="flex justify-end gap-3">
+          <div class="flex justify-end gap-3 pt-2">
             <button
               id="closeBtn"
               class="font-semibold px-3 py-1 bg-red-500 text-white rounded-lg hover:scale-103 hover:shadow-sm transition-all duration-200 cursor-pointer"
@@ -88,9 +89,14 @@
     <main
       id="mainGrid"
       class="grid grid-cols-[repeat(auto-fill,minmax(330px,1fr))] gap-8 pt-5 px-[5%] 2xl:px-[15%] mb-10"
+    ></main>
+
+    <section
+      id="libraryEmptySection"
+      class="text-white absolute left-[50%] top-[45%] translate-[-50%] bg-gradient-to-tl from-gren2 to-gren1 p-4 shadow-sm font-semibold w-full flex justify-center text-2xl tracking-wider"
     >
-      
-    </main>
+      <h1>LIBRARY EMPTY</h1>
+    </section>
 
     <script src="app.js"></script>
   </body>
