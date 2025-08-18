@@ -1,42 +1,5 @@
-// DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE
-const main = document.querySelector("main");
-const dialog = document.getElementById("bookDialog");
-const openBtn = document.getElementById("newBook");
-const closeBtn = document.getElementById("closeBtn");
-const submitBtn = document.getElementById("submitBtn");
-
-newBook.addEventListener("click", () => {
-  dialog.classList.add("animate-fade-up");
-  dialog.showModal();
-  setTimeout(() => {
-    dialog.classList.remove("animate-fade-up");
-  }, 500);
-});
-
-closeBtn.addEventListener("click", () => {
-  dialog.classList.add("animate-fade-out");
-  setTimeout(() => {
-    dialog.close();
-    dialog.classList.remove("animate-fade-out");
-  }, 100);
-});
-
-submitBtn.addEventListener("click", () => {
-  dialog.classList.add("animate-fade-out");
-  setTimeout(() => {
-    dialog.close();
-    dialog.classList.remove("animate-fade-out");
-  }, 100);
-
-  const text = document.getElementById("titleInput");
-  const author = document.getElementById("authorInput");
-  const pages = document.getElementById("pagesInput");
-  const checkbox = document.getElementById("checkboxInput");
-  addBookToLibrary(text, author, pages, checkbox);
-});
-
 // DATA CODE DATA CODE DATA CODE DATA CODE DATA CODE DATA CODE DATA CODE DATA CODE DATA CODE DATA CODE
-const myLibrary = [];
+let myLibrary = JSON.parse(localStorage.getItem("users")) || [];
 
 function Book(title, author, pages, read, id) {
   this.title = title;
@@ -67,6 +30,7 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function renderLibrary() {
+  localStorage.setItem("users", JSON.stringify(myLibrary));
   main.innerHTML = "";
 
   for (let i = 0; i < myLibrary.length; i++) {
@@ -74,17 +38,20 @@ function renderLibrary() {
 
     let readIndicator;
     let readIndicatorChanger;
+    let readIndicatorClass;
     if (book.read === true) {
       readIndicator = "Read";
       readIndicatorChanger = "Mark Unread";
+      readIndicatorClass = "bg-green-200";
     } else {
       readIndicator = "Unread";
       readIndicatorChanger = "Mark Read";
+      readIndicatorClass = "bg-red-200";
     }
 
     const cardTemplate = `
       <div
-        class="bg-gradient-to-tl from-gren2 to-gren1 p-4 rounded-lg shadow-sm hover:translate-y-[-2px] hover:shadow-lg transition-all duration-500"
+        data-book-id = "${book.id}" class="bg-gradient-to-tl from-gren2 to-gren1 p-4 rounded-lg shadow-sm hover:translate-y-[-2px] hover:shadow-lg transition-all duration-500"
       >
         <div class="flex flex-col gap-1 mb-4 text-gren3 font-semibold">
           <div class="flex items-center gap-2">
@@ -134,7 +101,7 @@ function renderLibrary() {
             </div>
           </div>
           <span
-            class="flex justify-center items-center gap-1 rounded-xl w-fit px-3 py-1 bg-green-200"
+            class="flex justify-center items-center gap-1 rounded-xl w-fit px-3 py-1 text-black/70 ${readIndicatorClass}"
           >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path
@@ -164,6 +131,77 @@ function renderLibrary() {
   }
 }
 
-const harry = new Book("harry", "colin", "67", "not read yet");
+function deleteBook(bookId) {
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i].id === bookId) {
+      myLibrary.splice(i, 1);
+    }
+  }
+  renderLibrary();
+}
 
-console.log(harry.info());
+function toggleReadStatus(bookId) {
+  for (let i = 0; i < myLibrary.length; i++) {
+    const currentElement = myLibrary[i];
+    if (currentElement.id === bookId) {
+      currentElement.read = !currentElement.read;
+      break;
+    }
+  }
+  renderLibrary();
+}
+
+// DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE DOM CODE
+const main = document.querySelector("main");
+const dialog = document.getElementById("bookDialog");
+const openBtn = document.getElementById("newBook");
+const closeBtn = document.getElementById("closeBtn");
+const submitBtn = document.getElementById("submitBtn");
+
+openBtn.addEventListener("click", () => {
+  dialog.classList.add("animate-fade-up");
+  dialog.showModal();
+  setTimeout(() => {
+    dialog.classList.remove("animate-fade-up");
+  }, 500);
+});
+
+closeBtn.addEventListener("click", () => {
+  dialog.classList.add("animate-fade-out");
+  setTimeout(() => {
+    dialog.close();
+    dialog.classList.remove("animate-fade-out");
+  }, 100);
+});
+
+submitBtn.addEventListener("click", () => {
+  dialog.classList.add("animate-fade-out");
+  setTimeout(() => {
+    dialog.close();
+    dialog.classList.remove("animate-fade-out");
+  }, 100);
+
+  const text = document.getElementById("titleInput").value;
+  const author = document.getElementById("authorInput").value;
+  const pages = document.getElementById("pagesInput").value;
+  const checkbox = document.getElementById("checkboxInput").checked;
+  addBookToLibrary(text, author, pages, checkbox);
+
+  document.querySelector("form").reset();
+});
+
+main.addEventListener("click", (e) => {
+  if (e.target.id === "readChange") {
+    const book = e.target.closest("[data-book-id]");
+    const theId = book.getAttribute("data-book-id");
+    toggleReadStatus(theId);
+  }
+  if (e.target.id === "deleteCard") {
+    const book = e.target.closest("[data-book-id]");
+    const theId = book.getAttribute("data-book-id");
+    deleteBook(theId);
+  }
+});
+
+// INITIALIZE INITIALIZE INITIALIZE INITIALIZE INITIALIZE INITIALIZE
+renderLibrary();
